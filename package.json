@@ -8,15 +8,33 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JGEsteves89/my-json-server-lib.git"
+  },
+  "keywords": [
+    "json",
+    "typescript",
+    "websocket",
+    "http",
+    "library"
+  ],
+  "author": "JGEsteves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JGEsteves89/my-json-server-lib/issues"
+  },
+  "homepage": "https://github.com/JGEsteves89/my-json-server-lib#readme",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "test": "jest"
+    "test": "jest",
+    "release:patch": "npm version patch -m 'chore(release): %s' && git push --follow-tags && npm publish --access public",
+    "release:minor": "npm version minor -m 'chore(release): %s' && git push --follow-tags && npm publish --access public",
+    "release:major": "npm version major -m 'chore(release): %s' && git push --follow-tags && npm publish --access public"
   },
-  "author": "",
-  "license": "ISC",
   "description": "This is a npm package for the my-json-server client has the following features:",
   "devDependencies": {
     "@types/jest": "^30.0.0",
