@@ -1,3 +1,4 @@
+import typescriptParser from '@typescript-eslint/parser';
 import prettier from 'eslint-config-prettier';
 import jest from 'eslint-plugin-jest';
 import node from 'eslint-plugin-node';
@@ -6,10 +7,13 @@ import security from 'eslint-plugin-security';
 import sonarjs from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
-import { defineConfig, globalIgnores } from 'eslint/config';
+import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores(['scripts.js']),
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
   // Ignore these directories (files here will not be linted)
   {
     ignores: ['**/node_modules/**', 'dist/**'],
@@ -20,15 +24,20 @@ export default defineConfig([
 
   {
     // Apply this configuration to all JavaScript files
-    files: ['**/*.js'],
+    files: ['**/*.ts', '**/*.js'],
 
     languageOptions: {
-      ecmaVersion: 'latest', // ECMAScript version to support
-      sourceType: 'module', // Use 'module' for ES modules, 'commonjs' for CommonJS
+      ecmaVersion: 'latest',
+      // The ECMAScript version to support. 'latest' enables the newest JavaScript syntax.
+
+      sourceType: 'module',
+      // Type of JavaScript source code.
+      // 'module' for ES modules, 'commonjs' for CommonJS modules.
+
       globals: {
-        // Node + modern JS globals
-        ...globals.node,
-        ...globals.es2021,
+        // Global variables available during linting.
+        ...globals.browser, // standard browser globals (e.g., window, document)
+        ...globals.es2021, // ES2021 globals (e.g., BigInt, globalThis)
         // Jest globals
         describe: 'readonly',
         it: 'readonly',
@@ -38,6 +47,20 @@ export default defineConfig([
         afterAll: 'readonly',
         beforeEach: 'readonly',
         afterEach: 'readonly',
+        global: 'readonly',
+        Buffer: 'readonly',
+      },
+
+      parser: typescriptParser,
+      // The parser ESLint should use.
+      // Must provide parse() or parseForESLint() methods.
+      // Default is 'espree'; legacy projects might use Babel instead.
+
+      parserOptions: {
+        // Additional options passed directly to the parser
+        ecmaFeatures: {
+          jsx: true, // Enable parsing of JSX syntax (React or similar)
+        },
       },
     },
 
@@ -54,6 +77,19 @@ export default defineConfig([
       // Prettier Integration
       // ========================
       'prettier/prettier': 'error', // Treat Prettier formatting issues as ESLint errors
+
+      // ========================
+      // TypeScript
+      // ========================
+      '@typescript-eslint/no-explicit-any': 'warn',
+      // Warns when you use the `any` type. Helps you minimize using `any` and keep type safety.
+
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+        // Throws an error for unused variables.
+        // Exception: function arguments that start with '_' are ignored.
+      ],
 
       // ========================
       // Modern JS Style

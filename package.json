@@ -4,18 +4,43 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "type": "module",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "This is a npm package for the my-json-server client has the following features:",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
+    "@types/ws": "^8.18.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-security": "^3.0.1",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-unicorn": "^61.0.2",
+    "globals": "^16.4.0",
+    "jest": "^30.2.0",
+    "prettier": "^3.6.2",
+    "ts-jest": "^29.4.5",
     "tsup": "^8.5.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.46.2"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
   }
 }
