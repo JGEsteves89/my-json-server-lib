@@ -64,32 +64,30 @@ import MyJSON from 'my-json-server';
 
 ## API
 
-### `MyJSON.connect(baseUrl, token)`
+### `MyJSON.connect<T>(baseUrl, token)`
 
 Creates a new client instance.
 
 * **`baseUrl`**: API endpoint URL
-    
 * **`token`**: authentication token
-    
 
 ### `read(): Promise<T>`
 
 Fetches the current JSON data from the server.
 
-### `write(data: T): Promise<void>`
+### `write(data: T)`
 
 Sends or updates JSON data on the server.
 
-### `delete(): Promise<void>`
+### `delete()`
 
 Deletes the JSON data from the server.
 
-### `onChange(callback: (data: T) => void): void`
+### `onChange(callback: (data: T) => void)`
 
 Listens for real-time updates via WebSocket.
 
-### `close(): void`
+### `close()`
 
 Closes the WebSocket connection.
 
@@ -99,8 +97,8 @@ Closes the WebSocket connection.
 
 We (me and my dog) welcome contributions! 🛠️
 
-Feel free to open issues, suggest improvements, or submit pull requests.  
-Whether it’s fixing bugs, adding features, or improving documentation, every contribution helps.  
+Feel free to open issues, suggest improvements, or submit pull requests.
+Whether it’s fixing bugs, adding features, or improving documentation, every contribution helps.
 
 Please follow the coding style and best practices used in the library.
 
@@ -115,9 +113,7 @@ Please follow the coding style and best practices used in the library.
 
 MIT
 
-```
-
-This version:  
+This version:
 
 - Highlights **features upfront**  
 - Shows **installation instructions** clearly  
