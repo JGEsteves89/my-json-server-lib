@@ -1,13 +1,15 @@
 {
   "name": "my-json-server-lib",
   "version": "1.0.1",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JGEsteves89/my-json-server-lib.git"

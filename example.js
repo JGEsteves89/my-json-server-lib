@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import MyJSON from 'my-json-server';
+import MyJSON from 'my-json-server-lib';
 
 (async () => {
   const API_TOKEN = 'THIS_IS_A_CLIENT_TOKEN';

@@ -5,7 +5,7 @@ import type { Socket } from 'node:net';
  * A class to interact with a JSON-based HTTP/WebSocket API.
  * @template T - The type of JSON data expected from the API.
  */
-export default class MyJSON<T = Record<string, unknown>> {
+export default class MyJSON<T = Record<string, unknown> | Record<string, unknown>[]> {
   private baseUrl: string;
   private token: string;
   private ws: WebSocket | null = null;
@@ -26,7 +26,10 @@ export default class MyJSON<T = Record<string, unknown>> {
    * @param token - The authentication token required for API access.
    * @returns A new instance of MyJSON.
    */
-  static connect<T = Record<string, unknown>>(baseUrl: string, token: string): MyJSON<T> {
+  static connect<T = Record<string, unknown> | Record<string, unknown>[]>(
+    baseUrl: string,
+    token: string,
+  ): MyJSON<T> {
     return new MyJSON<T>(baseUrl, token);
   }
 
