@@ -118,7 +118,7 @@ MIT
 ## Changelog
 
 This version:
-- 1.0.1 - Updated import and export package.json definitions 
-- 1.0.1 - MyJSON now accepts dicts and arrays
-- 1.0.1 - Fix name of the libary, updated examples and readme
-- 1.0.0 - Initial implementation
+- 1.0.2 - Updated import and export package.json definitions 
+- 1.0.2 - MyJSON now accepts dicts and arrays
+- 1.0.2 - Fix name of the libary, updated examples and readme
+- 1.0.1 - Initial implementation
