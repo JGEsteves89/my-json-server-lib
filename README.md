@@ -5,12 +5,6 @@ Easily read, write, delete, and listen for real-time changes in your JSON data.
 
 Check out the server repository: [my-json-server](https://github.com/JGEsteves89/my-json-server)
 
-
----
-## Issues
-- The name of the library on the example is wrong
-- Please update the types so it allows both arrays and dicts
-
 ---
 
 ## Features
